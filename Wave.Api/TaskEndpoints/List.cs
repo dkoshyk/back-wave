@@ -1,13 +1,13 @@
 ﻿using Ardalis.ApiEndpoints;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Wave.Api.ApplicationCore;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading;
+using Wave.Api.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wave.Api.TaskEndpoints
 {
@@ -15,15 +15,15 @@ namespace Wave.Api.TaskEndpoints
         .WithRequest<TaskListRequest>
         .WithResponse<IList<TaskListResult>>
     {
-        private readonly IAsyncRepository<TaskItem> repository;
-        private readonly IMapper mapper;
+        private readonly AppDbContext _dbContext;
+        private readonly IMapper _mapper;
 
         public List(
-            IAsyncRepository<TaskItem> repository,
+            AppDbContext dbContext,
             IMapper mapper)
         {
-            this.repository = repository;
-            this.mapper = mapper;
+            _dbContext = dbContext;
+            _mapper = mapper;
         }
         [HttpGet("/tasks")]
         [SwaggerOperation(
@@ -45,8 +45,9 @@ namespace Wave.Api.TaskEndpoints
             {
                 request.Page = 1;
             }
-            var result = (await repository.ListAllAsync(request.PerPage, request.Page, cancellationToken))
-                .Select(i => mapper.Map<TaskListResult>(i));
+            var result = (await _dbContext.Tasks.Skip(request.PerPage * (request.Page - 1)).Take(request.PerPage)
+                .ToListAsync(cancellationToken))
+                .Select(i => _mapper.Map<TaskListResult>(i));
 
             return Ok(result);
         }
