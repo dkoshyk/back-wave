@@ -22,8 +22,5 @@ namespace Wave.Api.ApplicationCore
 
         public int? OwnerId { get; set; }
         public User Owner { get; set; }
-
-        public int? AssignedToUserId { get; set; }
-        public User AssignedToUser { get; set; }
     }
 }
