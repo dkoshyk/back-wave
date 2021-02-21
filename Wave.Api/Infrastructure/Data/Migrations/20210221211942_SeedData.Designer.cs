@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Wave.Api.Infrastructure.Data;
 
 namespace Wave.Api.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210221211942_SeedData")]
+    partial class SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,13 +65,13 @@ namespace Wave.Api.Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2021, 2, 21, 23, 23, 58, 358, DateTimeKind.Local).AddTicks(5776),
+                            CreatedOn = new DateTime(2021, 2, 21, 23, 19, 41, 937, DateTimeKind.Local).AddTicks(235),
                             OwnerId = 1,
                             Priority = 0,
                             Status = "new",
                             Title = "Go to shop",
                             Type = "task",
-                            UpdatedOn = new DateTime(2021, 2, 21, 23, 23, 58, 366, DateTimeKind.Local).AddTicks(6372)
+                            UpdatedOn = new DateTime(2021, 2, 21, 23, 19, 41, 943, DateTimeKind.Local).AddTicks(4089)
                         });
                 });
 
@@ -187,7 +189,7 @@ namespace Wave.Api.Infrastructure.Data.Migrations
                             Id = 10,
                             FirstName = "Charles",
                             LastName = "Martinez",
-                            Login = "user11",
+                            Login = "james",
                             Password = "12345678"
                         },
                         new
