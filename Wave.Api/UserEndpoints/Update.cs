@@ -23,7 +23,7 @@ namespace Wave.Api.UserEndpoints
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        [HttpPut("/users")]
+        [HttpPut("/api/users")]
         [SwaggerOperation(
             Summary = "Updates an existing User",
             Description = "Updates an existing User",

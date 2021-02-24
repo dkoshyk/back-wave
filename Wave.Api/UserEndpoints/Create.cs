@@ -24,7 +24,7 @@ namespace Wave.Api.UserEndpoints
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        [HttpPost("/users")]
+        [HttpPost("/api/users")]
         [SwaggerOperation(
             Summary = "Creates a new User",
             Description = "Creates a new User",

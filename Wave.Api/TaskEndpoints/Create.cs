@@ -23,7 +23,7 @@ namespace Wave.Api.TaskEndpoints
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        [HttpPost("/tasks")]
+        [HttpPost("/api/tasks")]
         [SwaggerOperation(
             Summary = "Creates a new Task",
             Description = "Creates a new Task",

@@ -28,7 +28,7 @@ namespace Wave.Api.UserEndpoints
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        [HttpGet("/users")]
+        [HttpGet("/api/users")]
         [SwaggerOperation(
             Summary = "List all Users",
             Description = "List all Users",
