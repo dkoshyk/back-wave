@@ -19,7 +19,7 @@ namespace Wave.Api.UserEndpoints
         {
             _dbContext = dbContext;
         }
-        [HttpDelete("/users/{id}")]
+        [HttpDelete("/api/users/{id}")]
         [SwaggerOperation(
             Summary = "Deletes a User",
             Description = "Deletes a User",

@@ -18,7 +18,7 @@ namespace Wave.Api.TaskEndpoints
         {
             _dbContext = dbContext;
         }
-        [HttpDelete("/tasks/{id}")]
+        [HttpDelete("/api/tasks/{id}")]
         [SwaggerOperation(
             Summary = "Deletes a Task",
             Description = "Deletes a Task",

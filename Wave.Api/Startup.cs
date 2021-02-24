@@ -28,6 +28,15 @@ namespace Wave.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .SetIsOriginAllowed(_ => true)
+                    .AllowAnyHeader());
+            });
+
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlite("Data Source=database.sqlite")); // will be created in web project root
 
@@ -42,14 +51,18 @@ namespace Wave.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDbContext dbContext)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
 
+            //}
+
+            dbContext.Database.Migrate();
+
+            app.UseDeveloperExceptionPage();
+            app.UseCors("CorsPolicy");
             //app.UseHttpsRedirection();
 
             app.UseRouting();

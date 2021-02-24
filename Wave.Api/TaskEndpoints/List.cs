@@ -27,7 +27,7 @@ namespace Wave.Api.TaskEndpoints
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        [HttpGet("/tasks")]
+        [HttpGet("/api/tasks")]
         [SwaggerOperation(
             Summary = "List all Tasks",
             Description = "List all Tasks",
