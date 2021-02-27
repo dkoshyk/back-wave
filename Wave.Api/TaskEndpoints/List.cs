@@ -79,11 +79,17 @@ namespace Wave.Api.TaskEndpoints
                 query = query.Where(x => x.DeadlineOn <= request.ToDeadlineOn);
             }
 
-            var result = (await query
+            var count = query.Count();
+
+            var items = (await query
                 .Skip(request.PerPage * (request.Page - 1))
                 .Take(request.PerPage)
                 .ToListAsync(cancellationToken))
-                .Select(i => _mapper.Map<TaskListResult>(i));
+                .Select(x => _mapper.Map<TaskItemDto>(x));
+
+            var result = new TaskListResult();
+            result.Items.AddRange(items);
+            result.Count = count;
 
             return Ok(result);
         }

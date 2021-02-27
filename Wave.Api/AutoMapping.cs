@@ -13,7 +13,7 @@ namespace Wave.Api
 
             CreateMap<TaskItem, CreateTaskResult>();
             CreateMap<TaskItem, UpdatedTaskResult>();
-            CreateMap<TaskItem, TaskListResult>();
+            CreateMap<TaskItem, TaskItemDto>();
             CreateMap<TaskItem, TaskResult>();
 
             CreateMap<CreateUserCommand, User>();

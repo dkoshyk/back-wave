@@ -128,6 +128,96 @@ namespace Wave.Api.Infrastructure.Data
                     Title = "Go to shop",
                     Type = "task",
                     Status = "new"
+                },
+                new TaskItem()
+                {
+                    Id = id++,
+                    OwnerId = 1,
+                    CreatedOn = DateTime.Now,
+                    UpdatedOn = DateTime.Now,
+                    Title = "Go to shop",
+                    Type = "task",
+                    Status = "new"
+                },
+                new TaskItem()
+                {
+                    Id = id++,
+                    OwnerId = 1,
+                    CreatedOn = DateTime.Now,
+                    UpdatedOn = DateTime.Now,
+                    Title = "Go to home",
+                    Type = "task",
+                    Status = "new"
+                },
+                new TaskItem()
+                {
+                    Id = id++,
+                    OwnerId = 1,
+                    CreatedOn = DateTime.Now,
+                    UpdatedOn = DateTime.Now,
+                    Title = "Go to school",
+                    Type = "task",
+                    Status = "new"
+                },
+                new TaskItem()
+                {
+                    Id = id++,
+                    OwnerId = 1,
+                    CreatedOn = DateTime.Now,
+                    UpdatedOn = DateTime.Now,
+                    Title = "Go to kindergarten",
+                    Type = "task",
+                    Status = "new"
+                },
+                new TaskItem()
+                {
+                    Id = id++,
+                    OwnerId = 1,
+                    CreatedOn = DateTime.Now,
+                    UpdatedOn = DateTime.Now,
+                    Title = "Go to office",
+                    Type = "task",
+                    Status = "new"
+                },
+                new TaskItem()
+                {
+                    Id = id++,
+                    OwnerId = 1,
+                    CreatedOn = DateTime.Now,
+                    UpdatedOn = DateTime.Now,
+                    Title = "Go to bed",
+                    Type = "task",
+                    Status = "new"
+                },
+                new TaskItem()
+                {
+                    Id = id++,
+                    OwnerId = 1,
+                    CreatedOn = DateTime.Now,
+                    UpdatedOn = DateTime.Now,
+                    Title = "Go to the cinema",
+                    Type = "task",
+                    Status = "new"
+                },
+                new TaskItem()
+                {
+                    Id = id++,
+                    OwnerId = 1,
+                    CreatedOn = DateTime.Now,
+                    UpdatedOn = DateTime.Now,
+                    Title = "Go to meeting",
+                    Type = "task",
+                    Status = "new"
+                },
+                new TaskItem()
+                {
+                    Id = id++,
+                    OwnerId = 1,
+                    CreatedOn = DateTime.Now,
+                    UpdatedOn = DateTime.Now,
+                    Title = "Go to prison",
+                    Type = "task",
+                    Status = "new"
                 }
             };
 
