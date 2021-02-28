@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading;
 using Wave.Api.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Wave.Api.TaskEndpoints
 {
@@ -18,6 +19,8 @@ namespace Wave.Api.TaskEndpoints
         {
             _dbContext = dbContext;
         }
+
+        [Authorize]
         [HttpDelete("/api/tasks/{id}")]
         [SwaggerOperation(
             Summary = "Deletes a Task",

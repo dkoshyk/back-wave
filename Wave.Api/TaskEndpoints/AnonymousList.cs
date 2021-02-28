@@ -14,14 +14,14 @@ using Wave.Api.Infrastructure.Data;
 
 namespace Wave.Api.TaskEndpoints
 {
-    public class List : BaseAsyncEndpoint
+    public class AnonymousList : BaseAsyncEndpoint
         .WithRequest<TaskListRequest>
         .WithResponse<IList<TaskListResult>>
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public List(
+        public AnonymousList(
             AppDbContext dbContext,
             IMapper mapper)
         {
@@ -29,11 +29,11 @@ namespace Wave.Api.TaskEndpoints
             _mapper = mapper;
         }
 
-        [Authorize]
-        [HttpGet("/api/tasks")]
+        [AllowAnonymous]
+        [HttpGet("/api/tasks/allowanonymous")]
         [SwaggerOperation(
-            Summary = "List all Tasks",
-            Description = "List all Tasks",
+            Summary = "Allow Anonymous List all Tasks",
+            Description = "Allow Anonymous List all Tasks",
             OperationId = "Task.List",
             Tags = new[] { "TaskEndpoint" })
         ]
@@ -41,11 +41,6 @@ namespace Wave.Api.TaskEndpoints
             [FromQuery] TaskListRequest request,
             CancellationToken cancellationToken = default)
         {
-            var claimUserId = User.FindFirst("userId").Value;
-
-            int userId;
-            int.TryParse(claimUserId, out userId);
-
             if (request.PerPage == 0)
             {
                 request.PerPage = 10;
@@ -56,11 +51,6 @@ namespace Wave.Api.TaskEndpoints
             }
 
             IQueryable<TaskItem> query = _dbContext.Tasks;
-
-            if (userId > 0)
-            {
-                query = query.Where(x => x.OwnerId.Equals(userId));
-            }
 
             if (!string.IsNullOrEmpty(request.ContainsTitle))
             {

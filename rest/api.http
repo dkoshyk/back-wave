@@ -1,0 +1,25 @@
+
+### Auth
+POST https://localhost:5001/api/authenticate HTTP/1.1
+content-type: application/json
+
+{
+  "login": "user2",
+  "password": "12345678"
+}
+
+
+### Get List
+GET https://localhost:5001/api/tasks HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTG9naW4iOiJ1c2VyMiIsInVzZXJJZCI6IjEiLCJuYmYiOjE2MTQ0NzE4MzMsImV4cCI6MTYxNDQ3NTQzMywiaWF0IjoxNjE0NDcxODMzfQ.UtcY0H79SEEJKxlPpXgLdF2XSgI1CtDvxVCRp0mW-HY
+
+### Get Not Auth List
+GET https://localhost:5001/api/tasks/allowanonymous HTTP/1.1
+
+### Get By Id
+GET https://localhost:5001/api/tasks/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTG9naW4iOiJ1c2VyMiIsInVzZXJJZCI6IjEiLCJuYmYiOjE2MTQ0NzA4MzMsImV4cCI6MTYxNDQ3NDQzMywiaWF0IjoxNjE0NDcwODMzfQ.0PvVt66503bOVSetG940op5gCdomeebe_nM63M4tnoE
+
+
+

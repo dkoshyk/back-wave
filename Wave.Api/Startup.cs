@@ -64,11 +64,12 @@ namespace Wave.Api
                 x.SaveToken = false;
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuerSigningKey = false,
+                    ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
                     ValidateAudience = false,
-                    RequireExpirationTime = false
+                    RequireExpirationTime = false,
+                    ValidateLifetime = false
                 };
             });
         }
@@ -87,11 +88,10 @@ namespace Wave.Api
             app.UseDeveloperExceptionPage();
             app.UseCors("CorsPolicy");
             //app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseRouting();
+            app.UseAuthorization();
+            
 
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Wave Api v1"));

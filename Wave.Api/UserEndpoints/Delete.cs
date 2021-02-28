@@ -5,6 +5,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using System.Threading;
 using Wave.Api.Infrastructure.Data;
 using Wave.Api.TaskEndpoints;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Wave.Api.UserEndpoints
 {
@@ -19,6 +20,8 @@ namespace Wave.Api.UserEndpoints
         {
             _dbContext = dbContext;
         }
+
+        [Authorize]
         [HttpDelete("/api/users/{id}")]
         [SwaggerOperation(
             Summary = "Deletes a User",

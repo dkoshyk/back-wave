@@ -1,5 +1,6 @@
 ﻿using Ardalis.ApiEndpoints;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Annotations;
@@ -28,6 +29,8 @@ namespace Wave.Api.UserEndpoints
             _dbContext = dbContext;
             _mapper = mapper;
         }
+
+        [Authorize]
         [HttpGet("/api/users")]
         [SwaggerOperation(
             Summary = "List all Users",

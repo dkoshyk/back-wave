@@ -6,6 +6,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using System.Threading;
 using Wave.Api.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Wave.Api.TaskEndpoints
 {
@@ -23,6 +24,8 @@ namespace Wave.Api.TaskEndpoints
             _dbContext = dbContext;
             _mapper = mapper;
         }
+
+        [Authorize]
         [HttpGet("/api/tasks/{id}")]
         [SwaggerOperation(
             Summary = "Get Task",
