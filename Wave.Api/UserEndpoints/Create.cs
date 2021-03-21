@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Wave.Api.UserEndpoints
 {
     public class Create : BaseAsyncEndpoint
-        .WithRequest<int>
+        .WithRequest<CreateUserCommand>
         .WithResponse<UserResult>
     {
         private readonly AppDbContext _dbContext;
@@ -35,7 +35,7 @@ namespace Wave.Api.UserEndpoints
             Tags = new[] { "UserEndpoint" })
         ]
         public override async Task<ActionResult<UserResult>> HandleAsync(
-            int request,
+            CreateUserCommand request,
             CancellationToken cancellationToken = default)
         {
             var user = new User();

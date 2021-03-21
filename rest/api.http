@@ -8,6 +8,14 @@ content-type: application/json
   "password": "12345678"
 }
 
+### Auth
+POST https://wave-api.azurewebsites.net/api/authenticate HTTP/1.1
+content-type: application/json
+
+{
+  "login": "user2",
+  "password": "12345678"
+}
 
 ### Get List
 GET https://localhost:5001/api/tasks HTTP/1.1
@@ -16,6 +24,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTG9naW4iOiJ1c
 
 ### Get Not Auth List
 GET https://localhost:5001/api/tasks/allowanonymous HTTP/1.1
+
+### Get Not Auth List
+GET https://wave-api.azurewebsites.net/api/tasks/allowanonymous HTTP/1.1
 
 ### Get By Id
 GET https://localhost:5001/api/tasks/1 HTTP/1.1

@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Wave.Api.TaskEndpoints
 {
     public class Create : BaseAsyncEndpoint
-        .WithRequest<int>
+        .WithRequest<CreateTaskCommand>
         .WithResponse<TaskResult>
     {
         private readonly AppDbContext _dbContext;
@@ -34,7 +34,7 @@ namespace Wave.Api.TaskEndpoints
             Tags = new[] { "TaskEndpoint" })
         ]
         public override async Task<ActionResult<TaskResult>> HandleAsync(
-            int request,
+            CreateTaskCommand request,
             CancellationToken cancellationToken = default)
         {
             var task = new TaskItem();
