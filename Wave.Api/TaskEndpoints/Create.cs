@@ -37,15 +37,21 @@ namespace Wave.Api.TaskEndpoints
             CreateTaskCommand request,
             CancellationToken cancellationToken = default)
         {
+            var claimUserId = User.FindFirst("userId").Value;
+
+            int userId;
+            int.TryParse(claimUserId, out userId);
+
             var task = new TaskItem();
             _mapper.Map(request, task);
+            task.OwnerId = userId;
 
             await _dbContext.Tasks.AddAsync(task, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             var result = _mapper.Map<CreateTaskResult>(task);
 
-            return Ok(result);
+            return Created("", result);
         }
     }
 }
