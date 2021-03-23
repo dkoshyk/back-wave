@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Wave.Api.UserEndpoints
 {
     public class Delete : BaseAsyncEndpoint
-        .WithRequest<DeleteUserRequest>
+        .WithRequest<int>
         .WithoutResponse
     {
         private readonly AppDbContext _dbContext;
@@ -30,14 +30,14 @@ namespace Wave.Api.UserEndpoints
             Tags = new[] { "UserEndpoint" })
         ]
         public override async Task<ActionResult> HandleAsync(
-            DeleteUserRequest request,
+            int id,
             CancellationToken cancellationToken = default)
         {
-            var user = await _dbContext.Users.FindAsync(request.Id);
+            var user = await _dbContext.Users.FindAsync(id);
 
             if (user is null)
             {
-                return NotFound(request.Id);
+                return NotFound(id);
             }
 
             _dbContext.Users.Remove(user);
