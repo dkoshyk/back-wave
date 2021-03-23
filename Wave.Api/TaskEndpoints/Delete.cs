@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Wave.Api.TaskEndpoints
 {
     public class Delete : BaseAsyncEndpoint
-        .WithRequest<DeleteTaskRequest>
+        .WithRequest<int>
         .WithoutResponse
     {
         private readonly AppDbContext _dbContext;
@@ -29,14 +29,14 @@ namespace Wave.Api.TaskEndpoints
             Tags = new[] { "TaskEndpoint" })
         ]
         public override async Task<ActionResult> HandleAsync(
-            DeleteTaskRequest request,
+            int id,
             CancellationToken cancellationToken = default)
         {
-            var task = await _dbContext.Tasks.FindAsync(request.Id);
+            var task = await _dbContext.Tasks.FindAsync(id);
 
             if (task is null)
             {
-                return NotFound(request.Id);
+                return NotFound(id);
             }
 
             _dbContext.Tasks.Remove(task);
